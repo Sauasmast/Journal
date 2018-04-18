@@ -1,0 +1,2 @@
+# Journal
+Make a journal
