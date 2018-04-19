@@ -1,0 +1,8 @@
+.about{
+border-radius: 20px;
+padding: 5px;
+}
+
+.about p, .about h1 {
+  color:white;
+}
