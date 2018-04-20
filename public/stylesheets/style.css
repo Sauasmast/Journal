@@ -1,8 +1,8 @@
 .about{
 border-radius: 20px;
-padding: 5px;
+padding: 20px;
 }
 
-.about p, .about h1 {
+.about p, .about h1, form {
   color:white;
 }
