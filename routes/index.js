@@ -1,5 +1,10 @@
 var express = require('express');
 var router = express.Router();
+var application = require('../app');
+var mongoose = require('mongoose');
+
+require('../model/model');
+var journalmodel = mongoose.model('journal');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -18,8 +23,15 @@ router.get('/register', function(req, res, next) {
   res.render('register');
 });
 
-router.post('/check', function(req, res, next) {
-  res.send("Check out ----");
+router.post('/addform', function(req, res, next) {
+  var information = {
+    title: req.body.inputTitle,
+    journal: req.body.inputText
+  };
+  new journalmodel(information).save()
+  .then(check => {
+    res.redirect('/ideas');
+  })
 });
 
 router.post('/checking', function(req, res, next) {
