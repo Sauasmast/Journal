@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var exphbs  = require('express-handlebars');
+var mongoose = require('mongoose');
 
 var indexRouter = require('./routes/index');
 
@@ -12,7 +13,12 @@ var app = express();
 // view engine setup
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
- 
+
+//Mongodb connection and use of the arrow function 
+const db = "mongodb://localhost/journaldb";
+mongoose.connect(db).then(()=>console.log("Mongodb connected"))
+.catch( err => console.log(err));
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
