@@ -45,8 +45,15 @@ router.get('/ideas', function(req, res, next) {
   res.render('./afterlogin/ideas', {date : todaydate});
 });
 
-router.get('/edit', function(req, res, next) {
-  res.send('I had a edit');
+router.get('/edit/:id', function(req, res, next) {
+ journalmodel.findOne({
+   _id:req.params.id
+ }).then( ideas => {
+   console.log(req.params.id);
+   res.render('./afterlogin/edit',{
+     idea: ideas
+   });
+ })
 });
 
 router.get('/lists', function(req, res, next) {

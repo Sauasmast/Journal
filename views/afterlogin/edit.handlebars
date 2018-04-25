@@ -2,19 +2,19 @@
 
   <div class="form-group">
     <label for="exampleInputEmail1"> <b> Today's Date : </b> </label>
-    <input type="text" class="form-control" id="exampleInputEmail1" value={{date}} readonly>
+    <input type="text" class="form-control" id="exampleInputEmail1" value={{idea.date}}>
   </div>
 
   <div class="form-group">
     <label for="titleinput"> <b> Title : </b> </label>
-    <input type="text" class="form-control" id="titleinput" placeholder="Enter your Title">
+    <input type="text" class="form-control" id="titleinput" placeholder="Enter your Title" value={{idea.title}}>
   </div>
 
   <div class="form-group">
   <label for="textinput"><b> Your Journal : </b> </label>
-  <textarea class="form-control" rows="15" cols="50" id="textinput"> </textarea>
+  <textarea class="form-control" rows="15" cols="50" id="textinput"> {{idea.journal}} </textarea>
   </div>
 
   <button type="submit" class="btn btn-primary">Edit Journal</button>
 
-</form>
+</form> 
