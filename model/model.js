@@ -4,7 +4,7 @@ const schema = mongoose.Schema;
 const jour = new schema({
     date: {
         type:Date,
-        default:Date.Now
+        default:Date.now
     },
     title:{
         type: String,
