@@ -30,7 +30,7 @@ router.post('/addform', function(req, res, next) {
   };
   new journalmodel(information).save()
   .then(check => {
-    res.redirect('/ideas');
+    res.redirect('/lists');
   })
 });
 
@@ -41,19 +41,21 @@ router.post('/checking', function(req, res, next) {
 router.get('/ideas', function(req, res, next) {
   var d = new Date();
   var todaydate = d.getFullYear() + "-" + d.getMonth() + "-" + d.getDay();
+  console.log(todaydate);
   res.render('./afterlogin/ideas', {date : todaydate});
 });
 
 router.get('/edit', function(req, res, next) {
-  var d = new Date();
-  var todaydate = d.getFullYear() + "-" + d.getMonth() + "-" + d.getDay();
-  res.render('./afterlogin/edit', {date : todaydate});
+  res.send('I had a edit');
 });
 
 router.get('/lists', function(req, res, next) {
-  var d = new Date();
-  var todaydate = d.getFullYear() + "-" + d.getMonth() + "-" + d.getDay();
-  res.render('./afterlogin/list', {date : todaydate});
+  journalmodel.find({})
+  .sort({date:'desc'}) 
+  .then(ideas => {
+    res.render('./afterlogin/list', {
+      idea:ideas});
+    }); 
 });
 
 module.exports = router;
